@@ -8,3 +8,11 @@ branches:
   
 script:
   - ruby -e "puts 'Hello world!'"
+after_script:
+  - git remote add upstream https://github.com/github/gitignore.git
+  - git init
+  - git config user.name "xiaomo"
+  - git config user.email "xiaomo@xiaomo.info"
+  - git add .
+  - git commit -m "automated build"
+  - git push --quiet --force https://${REPO_TOKEN}@github.com/xiaomo-collections/gitignore.git master
